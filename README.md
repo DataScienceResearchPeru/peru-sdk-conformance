@@ -6,7 +6,8 @@ Corpus común y versionado de pruebas sintéticas para los SDKs nativos. Licenci
 
 ```bash
 python3 tools/check.py
-python3 tools/build_bundle.py --output /var/tmp/peru-conformance-build
+stage=$(mktemp -d /var/tmp/peru-conformance.XXXXXXXX)
+python3 tools/build_bundle.py --output "$stage"
 ```
 
 Para trabajo local, elegir un subdirectorio único de `/var/tmp`. El segundo comando crea un archivo con una lista explícita de cuatro archivos y sus hashes. No contiene implementaciones de SDKs ni credenciales. CI comprueba la integridad antes de producir el artefacto.
